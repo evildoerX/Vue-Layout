@@ -307,11 +307,11 @@ export default {
     min-height: 36px;
     font-size: 18px;
     -webkit-user-select: none;
-    transform: scale(0.7)translateX(-15%);
+    // transform: scale(0.7);
     padding-bottom: 10px;
-    transition: transform .2s;
+    transition: all .2s;
     &:hover {
-        transform: scale(1)translateX(5%);
+        transform: scale(1.4);
     }
     i {
         vertical-align: middle;
@@ -319,9 +319,9 @@ export default {
 }
 
 .components-list.iview-ui >li {
-    transform: scale(0.8)translateX(-5%);
+    transform: scale(0.8)translateX(-1%);
     &:hover {
-        transform: scale(1.1)translateX(10%);
+        transform: scale(0.9)translateX(1%);
     }
 }
 </style>

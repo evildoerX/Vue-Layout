@@ -1,33 +1,22 @@
 <template>
-    <div id="app">
-        <mu-row class="main-content">
-            <mu-col class="components" :width="width.components" :tablet="width.components" :desktop="width.components">
-                <components ref="components" />
-            </mu-col>
-            <mu-col class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
-                <preview ref="preview" />
-            </mu-col>
-            <mu-col class="attributes" :width="width.attr" :tablet="width.attr" :desktop="width.attr">
-                <mu-sub-header class="header">
-                    <mu-select-field class="select-field" autoWidth v-model="selectField.value">
-                        <mu-menu-item title="属性" value="属性">
-                        </mu-menu-item>
-                        <mu-menu-item title="组件树" value="组件树">
-                        </mu-menu-item>
-                    </mu-select-field>
-                    <span><a class="parent-component" v-if="parentComponent" @click="switchComponent">┡ {{parentComponent.info.name}}</a> {{current.info?' - '+current.info.name:''}}</span>
-                </mu-sub-header>
-                <attributes v-if="selectField.value==='属性'" class="attributes-content" />
-                <component-tree v-if="selectField.value==='组件树'" class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
-                <div class="attributes-bottom" v-if="current.info">
-                    <mu-flat-button label="UI文档" @click="openUiDocument" />
-                    <mu-flat-button label="操作" @click="oprate" />
-                </div>
-            </mu-col>
-
-
-        </mu-row>
-    </div>
+  <Row class="main-content">
+      <div class="components" :width="width.components" :tablet="width.components" :desktop="width.components">
+          <components ref="components" />
+      </div>
+      <Col span="24" class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
+        <preview ref="preview" />
+      </Col>
+      <Card class="attributes">
+        <Tabs value="name1">
+          <TabPane label="属性" name="name1">
+            <attributes class="attributes-content" />
+          </TabPane>
+          <TabPane label="组件树" name="name2">
+            <component-tree class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
+          </TabPane>
+        </Tabs>
+      </Card>
+  </Row>
 </template>
 <script>
 import attributes from './attributes'
@@ -169,85 +158,37 @@ export default {
     }
 }
 </script>
+
 <style lang="less" scoped>
-@import '~muse-ui/src/styles/colors.less';
-@previewBG: @deepPurple50;
-* {
-    -webkit-user-select: none;
+.main-content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
 }
-
-::-webkit-scrollbar {
-    display: none;
-}
-
-#app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-}
-
-.title {
-    font-family: Consolas, Liberation Mono, Menlo, Courier, monospace;
-    .description {
-        vertical-align: super;
-    }
-}
-
-.main-content>div {
-    transition: all .5s;
-}
-
-.client-height {
-    height: 100vh;
-    overflow: auto;
-}
-
-.attributes {
-    .client-height;
-    background-color: @previewBG;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    justify-item: center;
-    .header {
-        white-space: nowrap;
-    }
-    .select-field {
-        width: 70px;
-        vertical-align: top;
-        text-align: center;
-    }
-}
-
-.attributes-content {
-    flex: 1;
-}
-
-.component-tree {
-    flex: 1;
-}
-
-.attributes-bottom {
-    position: relative;
-    text-align: center;
-    color: @grey500;
-}
-
-.preview {
-    .client-height;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647);
-    z-index: 1;
-}
-
 .components {
-    .client-height;
-    background-color: @previewBG;
-    overflow-y: scroll;
+  width: 200px;
+  position: fixed;
+  left: 80px;
+  height: calc(100%);
+  background: #eaedf1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
 }
-
-.parent-component {
-    cursor: pointer;
+.preview {
+  padding: 0 100px;
+}
+.attributes {
+  position: fixed;
+  right: 0;
+  width: 200px;
+  height: calc(100%);
+  // background: #eaedf1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 100;
+  border-radius: 0;
 }
 </style>

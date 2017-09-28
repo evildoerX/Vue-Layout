@@ -3,13 +3,13 @@
         <topbar></topbar>
         <sidebar class="sidebar"></sidebar>
         <Col :span="24" class="main">
-        <div class="content-container">
-            <Col :span="24">
-                <transition>
-                    <router-view></router-view>
-                </transition>
-            </Col>
-        </div>
+          <div class="content-container">
+              <Col :span="24">
+                  <transition>
+                      <router-view></router-view>
+                  </transition>
+              </Col>
+          </div>
         </Col>
     </Row>
 </template>
