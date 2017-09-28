@@ -7,6 +7,7 @@ import './assets/css/global.css'
 
 //iView-UI
 import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 Vue.use(iView)
 
 //Mint-UI
