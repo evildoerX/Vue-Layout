@@ -17,6 +17,7 @@ import InputNumber from './InputNumber'
 import Rate from './Rate'
 import Form from './Form'
 import FormItem from './FormItem'
+import Table from './Table'
 
 var obj = {
     Row,
@@ -37,7 +38,8 @@ var obj = {
     InputNumber,
     Rate,
     Form,
-    FormItem
+    FormItem,
+    Table
 }
 
 export default obj

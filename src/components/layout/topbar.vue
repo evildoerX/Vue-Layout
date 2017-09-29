@@ -3,8 +3,7 @@
         <Col span="24">
             <Menu mode="horizontal" theme="primary" active-name="0">
                 <MenuItem name="1">
-                    <Icon type="ios-paper"></Icon>
-                    iLayout
+                    iwork
                 </MenuItem>
             </Menu>
         </Col>

@@ -115,10 +115,10 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Card">
                     <card />
                 </li>
-                <!--                 
+                <!--
                 <li draggable="true" @dragstart="dragStart" data-name="Back Top">
                     <backTop/>
-                </li> 
+                </li>
                 -->
             </ul>
         </div>
@@ -204,14 +204,17 @@
                 <li draggable="true" @dragstart="dragStart" data-name="Form">
                     <iview-form/>
                 </li>
+                <li draggable="true" @dragstart="dragStart" data-name="Table">
+                  <Table :columns="columns1" :data="data1"></Table>
+                </li>
             </ul>
         </div>
         <div v-if="activeUI === 'Element-UI'">
             <ul class="components-list">
-                <!--                 
+                <!--
                 <li draggable="true" @dragstart="dragStart" data-name="Header">
                     <mt-header fixed title="Header"></mt-header>
-                </li> 
+                </li>
                 -->
             </ul>
         </div>

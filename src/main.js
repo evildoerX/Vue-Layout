@@ -31,6 +31,9 @@ Vue.use(VueHighlightJS)
 import pretty from 'pretty'
 Vue.prototype.$prettyDom = pretty
 
+import VueCodeMirror from 'vue-codemirror'
+Vue.use(VueCodeMirror)
+
 //云数据库
 import lean from './utils/leancloud storage'
 Vue.prototype.$lean=lean

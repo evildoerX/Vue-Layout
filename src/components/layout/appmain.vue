@@ -35,7 +35,7 @@ export default {
 }
 
 .sidebar {
-    z-index: 10;
+    z-index: 1000;
 }
 
 .main {
