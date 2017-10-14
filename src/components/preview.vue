@@ -652,7 +652,7 @@ export default {
     position: relative;
     height: inherit;
     z-index: 0;
-    padding-bottom: 100px;
+    padding: 5px 5px 100px 5px;
 }
 
 .preview-tip {

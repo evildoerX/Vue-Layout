@@ -47,9 +47,9 @@
           <TabPane label="属性" name="name1">
             <attributes class="attributes-content" />
           </TabPane>
-          <TabPane label="组件树" name="name2">
+          <!-- <TabPane label="组件树" name="name2">
             <component-tree class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
-          </TabPane>
+          </TabPane> -->
         </Tabs>
       </Card>
   </Row>
@@ -219,12 +219,12 @@ export default {
   z-index: 100;
 }
 .preview {
-  padding: 0 100px 0 100px;
+  padding: 0 200px 0 100px;
 }
 .attributes {
   position: fixed;
   right: 0;
-  width: 200px;
+  width: 400px;
   height: calc(100%);
   // background: #eaedf1;
   overflow-y: auto;

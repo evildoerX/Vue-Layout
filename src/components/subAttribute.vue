@@ -10,7 +10,7 @@
         <div v-if="attr" v-for="(v,k,i) in attr">
             <!-- 文本型（text）属性 -->
             <Input type="textarea" v-if="v.type==='Array'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" fullWidth/>
-
+            <arrayform v-if="v.type==='Array'" v-model="v.value" :values="v.value" @clickaddtable="clickaddtable"></arrayform>
             <mu-text-field v-if="v.type==='text'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" type="text" fullWidth/>
             <!-- 数字型（number）属性 -->
             <mu-text-field v-if="v.type==='number'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" type="number" fullWidth/>
@@ -37,6 +37,7 @@
     </div>
 </template>
 <script>
+import arrayform from './components/ArrayForm'
 import iconPicker from './iconPicker'
 import colorPicker from './colorPicker'
 import ioniconPicker from './ioniconPicker'
@@ -65,7 +66,7 @@ export default {
             deep: true,
             handler(val, oldVal) {
                 this.attr = JSON.parse(JSON.stringify(val))
-                console.log(this.attr)
+                // console.log(this.attr)
             }
         }
     },
@@ -83,10 +84,22 @@ export default {
                     }
                 })
             else this.$emit('update', this.attr)
+        },
+        clickaddtable(data){
+            console.log('ch3.....', data)
+           
+            let josnstr = JSON.stringify(data)
+            josnstr = josnstr.replace(/"/g, '\'')
+            josnstr = josnstr.replace(/\'title\'/g, 'title')
+            josnstr = josnstr.replace(/\'key\'/g, 'key')
+             console.log('ch4.....', josnstr)
+            this.attr.columns.value = josnstr
+            this.updateAttribute()
+            // console.log('ch5.....', this.attr.columns.value)
         }
     },
     components: {
-        iconPicker,colorPicker,ioniconPicker
+        iconPicker,colorPicker,ioniconPicker,arrayform
     }
 }
 </script>

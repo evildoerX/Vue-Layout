@@ -6,7 +6,7 @@ var handle = function(_attr, _slots) {
         columns: {
             type: 'Array',
             value: `[{
-                title: '',
+                title: '名称',
                 key: 'name'
             },
             {
@@ -19,7 +19,7 @@ var handle = function(_attr, _slots) {
             }]`
         },
         data: {
-            type: 'Array',
+            type: 'Array1',
             value: `[{
                 name: '',
                 age: '',
@@ -40,6 +40,10 @@ var handle = function(_attr, _slots) {
             type: 'selection',
             items: ['large', 'small', 'default'],
             value: 'default'
+        },
+        border: {
+            type: 'boolean',
+            value: true
         }
     },
     slots = {
