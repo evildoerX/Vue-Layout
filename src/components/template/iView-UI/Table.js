@@ -1,52 +1,49 @@
-import { getTemplate, getSlotContent, getStringTypeAttr } from '@/components/template'
+import { getTemplate, getSlotContent, getStringTypeAttr  } from '@/components/template'
 
 var handle = function(_attr, _slots) {
     //定义默认属性
     let attributes = {
-            label: {
-                type: 'text',
-                value: 'Button'
+        columns: {
+            type: 'Array',
+            value: `[{
+                title: '',
+                key: 'name'
             },
-            type: {
-                type: 'selection',
-                items: ['primary', 'ghost', 'dashed', 'text', 'info', 'success', 'warning', 'error'],
-                value: ''
+            {
+                title: '',
+                key: 'age'
             },
-            size: {
-                type: 'selection',
-                items: ['large', 'small', ''],
-                value: ''
-            },
-            shape: {
-                type: 'selection',
-                items: ['circle', ''],
-                value: ''
-            },
-            long: {
-                type: 'boolean',
-                value: false
-            },
-            ['html-type']: {
-                type: 'selection',
-                items: ['button', 'submit', 'reset'],
-                value: ''
-            },
-            disabled: {
-                type: 'boolean',
-                value: false
-            },
-            loading: {
-                type: 'boolean',
-                value: false
-            },
-            icon: {
-                type: 'ionicon',
-                value: ''
-            }
+            {
+                title: '',
+                key: 'address'
+            }]`
         },
-        slots = {
-            default: []
+        data: {
+            type: 'Array',
+            value: `[{
+                name: '',
+                age: '',
+                address: ''
+            },
+            {
+                name: '',
+                age: '',
+                address: ''
+            },
+            {
+                name: '',
+                age: '',
+                address: ''
+            }]`
+        },
+        size: {
+            type: 'selection',
+            items: ['large', 'small', 'default'],
+            value: 'default'
         }
+    },
+    slots = {
+    }
 
     //覆盖默认属性
     Object.assign(slots, _slots)
@@ -57,8 +54,8 @@ var handle = function(_attr, _slots) {
 
     //获取插槽模板内容
     var subContent = getSlotContent(slots)
-        //设置当前组件的slot
-    if (attributes.slot && attributes.slot !== 'default') {
+    //设置当前组件的slot
+    if (attributes.slot && attributes.slot!=='default') {
         attributes.slot = {
             type: 'text',
             value: attributes.slot
@@ -72,13 +69,10 @@ var handle = function(_attr, _slots) {
 
     //字符串模板操作
     let stringAttr = getStringTypeAttr(attributes)
-    let template = `<Table
-                        ${stringAttr}>
-                        ${subContent||attributes.label.value}
+    let template = `<Table 
+                    	${stringAttr}>
+                        ${subContent}
                     </Table>`
-
-    //删除自定义非ui属性
-    template = template.replace(`label="${attributes.label.value}"`, '')
 
     return { template, attributes, slots }
 }

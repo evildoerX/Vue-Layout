@@ -1,16 +1,17 @@
 <template>
     <section>
-        <mu-content-block style="display:flex;">
+        <!-- <mu-content-block style="display:flex;">
             <mu-select-field :value="activeUI" @change="handleTabChange" autoWidth>
                 <mu-menu-item title="iView-UI" value="iView-UI">
                 </mu-menu-item>
             </mu-select-field>
             <mu-sub-header style="white-space:nowrap;">- 组件</mu-sub-header>
-        </mu-content-block>
-        <div v-if="activeUI === 'iView-UI'">
+        </mu-content-block> -->
+        <div>
+            <h5 style="padding:10px 0 0 10px;">基础组件：</h5>
             <ul class="components-list iview-ui">
                 <li draggable="true" @dragstart="dragStart" data-name="Table">
-                    <Table> </Table>
+                    <Table :columns="columns1" :data="data1"> </Table>
                 </li>
             </ul>
         </div>
@@ -23,7 +24,33 @@ import iViewUiList from './list/iview-ui'
 export default {
     name: 'components',
     data() {
-        return {}
+        return {
+            columns1: [
+                    {
+                        title: '',
+                        key: 'id'
+                    },
+                    {
+                        title: '',
+                        key: 'name'
+                    },
+                    {
+                        title: '',
+                        key: 'data'
+                    }
+                ],
+                data1: [
+                    {
+                        
+                    },
+                    {
+                        
+                    },
+                    {
+                        
+                    }
+                ]
+        }
     },
     mounted() {
 
