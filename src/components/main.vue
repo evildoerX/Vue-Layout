@@ -1,6 +1,6 @@
 <template>
   <Row class="main-content">
-      <div class="header-box" >
+      <!-- <div class="header-box" >
         <div style="padding-top:10px;">选择模板：</div>
         <Tabs class="header-tab" value="name1">
             <TabPane label="组件分类1" name="name1">
@@ -24,9 +24,10 @@
             <TabPane label="组件分类3" name="name3">
             </TabPane>
         </Tabs>
-      </div>
+      </div> -->
       <div class="components" :width="width.components" :tablet="width.components" :desktop="width.components">
-          <Tabs value="name1">
+          <components ref="components" />
+          <!-- <Tabs value="name1">
             <TabPane label="基础组件" name="name1">
               <components ref="components" />
             </TabPane>
@@ -36,7 +37,7 @@
             <TabPane label="页面组件" name="name3">
               <components ref="components" />
             </TabPane>
-        </Tabs>
+        </Tabs> -->
       </div>
       <Col span="24" class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
         <preview ref="preview" />
