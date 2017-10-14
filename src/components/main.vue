@@ -219,7 +219,7 @@ export default {
   z-index: 100;
 }
 .preview {
-  padding: 0 100px;
+  padding: 0 100px 0 100px;
 }
 .attributes {
   position: fixed;
