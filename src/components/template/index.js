@@ -1,24 +1,7 @@
-import Common from './Common'
-import MuseUI from './Muse-UI'
-import MintUI from './Mint-UI'
 import iViewUI from './iView-UI'
 
 var getTemplate = function(info, _attr = {}, _slots = {}) {
-    let component
-    switch (info.ui) {
-        case 'Muse-UI':
-            component = MuseUI[info.name](_attr, _slots, info)
-            break
-        case 'Mint-UI':
-            component = MintUI[info.name](_attr, _slots, info)
-            break
-        case 'iView-UI':
-            component = iViewUI[info.name](_attr, _slots, info)
-            break
-        case 'Common':
-            component = Common[info.name](_attr, _slots, info)
-            break
-    }
+    let component = iViewUI[info.name](_attr, _slots, info)
 
     //为了不让二次获取模板时丢失slot信息
     component.slot = component.attributes.slot.value

@@ -130,10 +130,6 @@ export default {
         },
         openUiDocument() {
             switch (this.current.info.ui) {
-                case 'Muse-UI':
-                    return window.open('http://www.muse-ui.org/#/' + this.current.info.name.replace(' ', ''))
-                case 'Mint-UI':
-                    return window.open('https://mint-ui.github.io/docs/#/zh-cn/' + this.current.info.name.replace(' ', '-'))
                 case 'iView-UI':
                     return window.open('https://www.iviewui.com/components/' + this.current.info.name)
                 default:
