@@ -3,7 +3,40 @@
         <!-- CODE视图 -->
         <mu-paper class="preview-head">
             <div class="bar">
-                <mu-sub-header style="display:inline;">{{showType}}</mu-sub-header>
+                <div style="float:left;">
+                    <div style="display:flex;align-items: center;padding: 10px;">
+                        <!-- <div style="margin-lef">{{showType}}</div> -->
+                        <div><Icon type="ios-copy-outline" size="18"></Icon></div>
+                        <Dropdown trigger="click" style="margin-left: 10px;margin-right: 5px;">
+                            <div href="javascript:void(0)">
+                                库存模块
+                                <Icon type="arrow-down-b"></Icon>
+                            </div>
+                            <DropdownMenu slot="list">
+                                <DropdownItem>招聘模块</DropdownItem>
+                                <DropdownItem>人事模块</DropdownItem>
+                                <DropdownItem>库存模块</DropdownItem>
+                                <DropdownItem>分诊模块</DropdownItem>
+                                <DropdownItem>支付模块</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                        <div>/</div>
+                        <Dropdown trigger="click" style="margin-left: 5px;margin-right: 20px;">
+                            <div href="javascript:void(0)">
+                                出库页面
+                                <Icon type="arrow-down-b"></Icon>
+                            </div>
+                            <DropdownMenu slot="list">
+                                <DropdownItem>库存物品页面</DropdownItem>
+                                <DropdownItem>出库页面</DropdownItem>
+                                <DropdownItem>入库页面</DropdownItem>
+                                <DropdownItem>库存管理页面</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                        <Button icon="plus-round" type="ghost" size="small"> 添加页面</Button>
+                        <Button style="margin-left:5px;" icon="arrow-swap" type="ghost" size="small">切换到布局</Button>
+                    </div>
+                </div>
                 <mu-icon-button style="float:right;" icon="fullscreen" tooltip="全屏" @click="fullScreen" />
                 <mu-icon-button style="float:right;" icon="delete" tooltip="清空" @click="empty" />
                 <mu-icon-menu style="float:right;" icon="stay_current_portrait" tooltip="视图" :targetOrigin="{vertical: 'bottom',horizontal: 'left'}">

@@ -9,7 +9,7 @@
             }-->
         <div v-if="attr" v-for="(v,k,i) in attr">
             <!-- 文本型（text）属性 -->
-            <Input type="textarea" v-if="v.type==='Array'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" fullWidth/>
+            <!-- <Input type="textarea" v-if="v.type==='Array'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" fullWidth/> -->
             <arrayform v-if="v.type==='Array'" v-model="v.value" :values="v.value" @clickaddtable="clickaddtable"></arrayform>
             <mu-text-field v-if="v.type==='text'" :label="k" :name="k" v-model="v.value" @input.native="updateAttribute" type="text" fullWidth/>
             <!-- 数字型（number）属性 -->
