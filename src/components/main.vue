@@ -39,13 +39,17 @@
             </TabPane>
         </Tabs> -->
       </div>
-      <Col span="24" class="preview" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
-        <preview ref="preview" />
+      <Col span="24" class="preview" :class="ischoosecomponentspre" :width="width.preview" :tablet="width.preview" :desktop="width.preview">
+        <preview ref="preview" :choosecomp="choosecomp"/>
       </Col>
-      <Card class="attributes">
+      <Card class="attributes" :class="ischoosecomponents">
         <Tabs value="name1">
-          <TabPane label="属性" name="name1">
+          <TabPane label="表格设计" name="name1">
             <attributes class="attributes-content" />
+          </TabPane>
+          <TabPane label="数据绑定" name="name2">
+              <!-- <apiform></apiform> -->
+              <apiattributes></apiattributes>
           </TabPane>
           <!-- <TabPane label="组件树" name="name2">
             <component-tree class="component-tree" :components="$store.state.components.filter(c=>!c.parentId)" />
@@ -59,10 +63,13 @@ import attributes from './attributes'
 import components from './components'
 import preview from './preview'
 import componentTree from './componentTree.vue'
+import apiform from '../components/components/APIForm'
+import apiattributes from './apiattributes'
 export default {
     name: 'app',
     data() {
         return {
+            choosecomp: false,
             setting: {
                 open: false,
                 selectEffect: true
@@ -80,7 +87,22 @@ export default {
     mounted() {
         this.setSelectEffect(this.setting.selectEffect)
     },
+    created() {
+        this.$store.state.ischoosecomp = false
+        this.choosecomp = false
+    },
     computed: {
+        ischoosecomponentspre() {
+            if(this.$store.state.ischoosecomp){
+                this.choosecomp = true
+            }else {
+                this.choosecomp = false
+            }
+            return this.$store.state.ischoosecomp ? 'previewchoose' : ''
+        },
+        ischoosecomponents() {
+            return this.$store.state.ischoosecomp ? '' : 'attributesnull'
+        },
         current: { //预览视图中选中的组件
             get() {
                 return this.$store.state.currentComponent
@@ -187,6 +209,8 @@ export default {
         preview,
         attributes,
         componentTree,
+        apiattributes,
+        apiform
     }
 }
 </script>
@@ -215,11 +239,15 @@ export default {
   z-index: 100;
 }
 .preview {
-  padding: 0 200px 0 100px;
+  padding-left:100px;
+}
+.previewchoose {
+//   padding-right:400px;
 }
 .attributes {
   position: fixed;
   right: 0;
+  top: 108px;
   width: 400px;
   height: calc(100%);
   // background: #eaedf1;
@@ -227,5 +255,10 @@ export default {
   overflow-x: hidden;
   z-index: 100;
   border-radius: 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+//   transition: all .2s ease-in-out;
+}
+.attributesnull {
+    display: none;
 }
 </style>

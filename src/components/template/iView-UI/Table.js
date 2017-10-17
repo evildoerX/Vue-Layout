@@ -5,18 +5,25 @@ var handle = function(_attr, _slots) {
     let attributes = {
         columns: {
             type: 'Array',
-            value: `[{
-                title: '名称',
-                key: 'name'
-            },
-            {
-                title: '',
-                key: 'age'
-            },
-            {
-                title: '',
-                key: 'address'
-            }]`
+            value: `[
+                {
+                    type: 'selection',
+                    width: 60,
+                    align: 'center'
+                },
+                {
+                    title: '名称',
+                    key: 'name'
+                },
+                {
+                    title: '',
+                    key: 'age'
+                },
+                {
+                    title: '',
+                    key: 'address'
+                }
+            ]`
         },
         data: {
             type: 'Array1',
@@ -35,15 +42,10 @@ var handle = function(_attr, _slots) {
                 age: '',
                 address: ''
             }]`
-        },
-        size: {
-            type: 'selection',
-            items: ['large', 'small', 'default'],
-            value: 'default'
-        },
-        border: {
-            type: 'boolean',
-            value: true
+        // },
+        // border: {
+        //     type: 'boolean',
+        //     value: true
         }
     },
     slots = {

@@ -1,5 +1,5 @@
 <template>
-    <section class="preview" @dragover="dragOver" @drop="drop">
+    <section class="preview" @dragover="dragOver" @drop="drop" >
         <!-- CODE视图 -->
         <mu-paper class="preview-head">
             <div class="bar">
@@ -53,7 +53,7 @@
             </mu-content-block>
         </mu-paper>
         <!-- 预览视图 -->
-        <div ref="preview" v-show="previewMode==='pc'" class="preview-area" @click="clickPreview" @contextmenu="rightClick" @keyup.delete="del">
+        <div ref="preview" v-show="previewMode==='pc'" class="preview-area" :class="previewall" @click="clickPreview" @contextmenu="rightClick" @keyup.delete="del">
             <div v-if="!item.parentId" :id="item.info.id" v-for="(item,index) in components"></div>
         </div>
         <iframe src="./#/preview/mobile" class="preview-mobile" v-if="previewMode==='mobile'"></iframe>
@@ -118,6 +118,9 @@ export default {
             },
             previewMode: 'pc'
         }
+    },
+    props: {
+        choosecomp: Boolean
     },
     mounted() {
         //拖动放置位置的虚线框位置计算
@@ -359,6 +362,9 @@ export default {
             let componentHTML = this.getComponentNode(target)
             if (componentHTML) {
                 //添加选中效果
+                this.$store.commit('setState', {
+                    ischoosecomp: true
+                })
                 let list = document.querySelectorAll('[data-component-active="true"]')
                 list.forEach(el => {
                     el.setAttribute('data-component-active', '')
@@ -372,6 +378,10 @@ export default {
                     this.$store.commit('setState', {
                         currentComponent: component
                     })
+            }else {
+                this.$store.commit('setState', {
+                    ischoosecomp: false
+                })
             }
         },
         mount() {
@@ -628,6 +638,9 @@ export default {
         }
     },
     computed: {
+        previewall() {
+            return this.choosecomp ? 'preview-areanull' : ''
+        },
         width: { //各视图宽度比
             get() {
                 return this.$store.state.width
@@ -687,7 +700,9 @@ export default {
     z-index: 0;
     padding: 5px 5px 100px 5px;
 }
-
+.preview-areanull{
+    padding-right: 405px;
+}
 .preview-tip {
     text-align: center;
     color: @grey500;

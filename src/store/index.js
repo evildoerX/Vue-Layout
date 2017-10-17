@@ -26,7 +26,8 @@ const store = new Vuex.Store({
         currentComponent: {}, //预览视图的选中组件
         components: [], //预览视图的组件树
         backupComponents: [],//删除组件时备份的
-        copiedComponents: []//复制的组件
+        copiedComponents: [],//复制的组件
+        ischoosecomp: false
     },
     mutations: {
         setState(state, obj) {
